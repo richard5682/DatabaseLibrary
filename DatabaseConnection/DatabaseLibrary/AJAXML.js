@@ -52,7 +52,7 @@ function constructUrl(url,id){
 
 //GET THE XMLDATA FROM THE RECIEVER PART OF CONNECTION
 //MUST BE CALLED INSIDE XMLRecieve function this will get the XML response of the PHP
-function getXML(connection,function1){
+function getXML(connection){
 	if(connection.xmlConnection.readyState == 4 || connection.xmlConnection.readyState == 200){
 		connection.XML = connection.xmlConnection.responseXML;
 		return true;
