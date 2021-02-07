@@ -78,7 +78,7 @@
 			}
 		}
 	}
-	//CONSTRUCT A SQL WITH EASY SYNTAX
+	//CONSTRUCT A SELECT SQL WITH EASY SYNTAX
 	function Construct_SELECTSQL($SELECT,$FROM,$WHERE,$VALUES){
 		$buffer = 'SELECT ';
 		$BOOL1 = false;
@@ -103,6 +103,35 @@
 				$buffer .= "`".$WHERE[$i]."` = '".$VALUES[$i]."'";
 			}
 		}
+		return $buffer;
+	}
+	//CONSTRUCT A INSERT SQL EASILY
+	function Construct_INSERTSQL($INSERT,$WHERE,$VALUES){
+		$buffer = 'INSERT INTO '.$INSERT." (";
+		$b=false;
+		foreach($WHERE as $varname){
+			if($b){
+				$buffer .= ",";
+			}else{
+				$b=true;
+			}
+			$buffer .= "`".$varname."`";
+		}
+		$buffer .= ") VALUES (";
+		$b=false;
+		foreach($VALUES as $value){
+			if($b){
+				$buffer .= ",";
+			}else{
+				$b=true;
+			}
+			if($value != null){
+				$buffer .= "`".$value."`";
+			}else{
+				$buffer .= "NULL";
+			}
+		}
+		$buffer .= ");";
 		return $buffer;
 	}
 	//PROCESS A SQL IN A CONNECTION AND RETURN THE RESULT AS MULTI-DIMENSIONAL ARRAY
