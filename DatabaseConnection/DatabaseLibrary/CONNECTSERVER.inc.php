@@ -126,16 +126,16 @@
 				$b=true;
 			}
 			if($value != null){
-				$buffer .= "`".$value."`";
+				$buffer .= "'".$value."'";
 			}else{
 				$buffer .= "NULL";
 			}
 		}
-		$buffer .= ");";
+		$buffer .= ")";
 		return $buffer;
 	}
 	//PROCESS A SQL IN A CONNECTION AND RETURN THE RESULT AS MULTI-DIMENSIONAL ARRAY
-	function QUERY_SQL($SQL,$ASSOCINDEX = null){
+	function QUERY_SELECTSQL($SQL,$ASSOCINDEX = null){
 		global $SERVERCONNECTION;
 		global $SERVERCONNECTIONS;
 		if(isset($ASSOCINDEX)){
@@ -149,6 +149,19 @@
 				$DATA[] = $buffdata;
 			}
 			return $DATA;
+		}
+		return false;
+	}
+	function QUERY_INSERTSQL($SQL,$ASSOCINDEX = null){
+		global $SERVERCONNECTION;
+		global $SERVERCONNECTIONS;
+		if(isset($ASSOCINDEX)){
+			$REUSLT = mysqli_query($SERVERCONNECTIONS[$ASSOCINDEX],$SQL);
+		}else{
+			$RESULT = mysqli_query($SERVERCONNECTION,$SQL);
+		}
+		if($RESULT){
+			return true;
 		}
 		return false;
 	}

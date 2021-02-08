@@ -18,7 +18,11 @@ function AJAXConnection(url,id,XMLRecieve){
 //index - the index where the data is
 //return a data
 function getData(data,index){
-	return data.getElementsByTagName(index);
+	if(data != null){
+		return data.getElementsByTagName(index);
+	}else{
+		return false;
+	}
 }
 
 //GET VALUE OF THE TABLE OF XMLDATA

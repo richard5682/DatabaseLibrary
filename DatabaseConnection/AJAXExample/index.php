@@ -5,7 +5,7 @@
 <html>
 
 	<head>
-		<script type="text/javascript" src="DatabaseLibrary/AJAXML.js"></script>
+		<script type="text/javascript" src="../JavascriptLibrary/AJAXML.js"></script>
 		
 		<script type="text/javascript">
 			var url = "EXAMPLE.php";
