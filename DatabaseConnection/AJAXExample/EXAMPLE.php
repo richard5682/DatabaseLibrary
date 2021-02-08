@@ -6,4 +6,5 @@
 			echo("HELLO");
 		echo("</person>");
 	}
+	writeXML();
 ?>
