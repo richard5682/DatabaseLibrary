@@ -12,6 +12,7 @@ function CheckInput(inputstring){
 		return false;
 	}
 }
+//DIALOGUE UTIL
 var init_dialogue = false;
 function showDialogue(header,text,csslink=null){
 	if(!init_dialogue){
@@ -35,4 +36,20 @@ function showDialogue(header,text,csslink=null){
 }
 function hideDialogue(){
 	document.getElementById("C_dialogbox").style.display="none";
+}
+function initDialogue(){
+	if(!init_dialogue){
+		var header = "";
+		var text = "";
+		init_dialogue = true;
+		var csslink="../template/dialogbox.css";
+		var linkelement = document.createElement("link");
+		linkelement.href = csslink;
+		linkelement.rel = "stylesheet";
+		linkelement.type = "text/css";
+		var dialogue="<div onclick=\"javascript: hideDialogue()\" id=\"C_dialogbox\"><h1 id=\"C_dialogboxh1\">"+header+"</h1><p id=\"C_dialogboxp\">"+text+"</p></div>";
+		document.head.appendChild(linkelement);
+		document.body.innerHTML += dialogue;
+		document.getElementById("C_dialogbox").style.display="none";
+	}
 }
