@@ -29,7 +29,7 @@
 		global $GLOBAL_TIMEOUT;
 		global $TIMEOUT_SYNTAX;
 		$_SESSION[$varname] = $value;
-		if($expiration != null){
+		if($expiration == null){
 			if($GLOBAL_TIMEOUT != null){
 				$_SESSION[$varname.$TIMEOUT_SYNTAX]=time()+$GLOBAL_TIMEOUT;
 			}
@@ -54,8 +54,10 @@
 			if($_SESSION[$varname.$TIMEOUT_SYNTAX]>time()){
 				deleteSession($varname);
 				return true;
+			}else{
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 ?>
